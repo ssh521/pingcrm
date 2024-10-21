@@ -20,7 +20,7 @@
     </div>
     <div class="mb-4">
       <Link class="group flex items-center py-3" href="/reports">
-        <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl('reports') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+      <icon name="printer" class="mr-2 w-4 h-4" :class="isUrl(['reports','asdf']) ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
         <div :class="isUrl('reports') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Reports</div>
       </Link>
     </div>
@@ -38,7 +38,8 @@ export default {
   },
   methods: {
     isUrl(...urls) {
-      let currentUrl = this.$page.url.substr(1)
+      let currentUrl = this.$page.url.slice(1) // Changed from substr to slice
+      console.log(this.$page.url.slice(1))
       if (urls[0] === '') {
         return currentUrl === ''
       }
@@ -47,3 +48,4 @@ export default {
   },
 }
 </script>
+
